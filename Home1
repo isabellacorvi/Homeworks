@@ -1,0 +1,10 @@
+var x = 100;
+var y = 100;
+function drawCircle(x, y) {
+	context.beginPath();
+	context.arc(x, y, 50, 0, 2 * Math.PI);
+	context.fillStyle = "#00ff00";
+	context.fill();
+	context.strokeStyle = "#000000";
+	context.stroke();
+}
