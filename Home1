@@ -1,10 +1,83 @@
-var x = 100;
-var y = 100;
-function drawCircle(x, y) {
-	context.beginPath();
-	context.arc(x, y, 50, 0, 2 * Math.PI);
-	context.fillStyle = "#00ff00";
-	context.fill();
-	context.strokeStyle = "#000000";
-	context.stroke();
-}
+Public Class Form1
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+
+    End Sub
+
+    Private Sub PictureBox1_Paint(sender As Object, e As PaintEventArgs) Handles PictureBox1.Paint
+
+        Dim g As Graphics = e.Graphics
+
+        ' Imposta colore 
+        Dim cerchioColore As New SolidBrush(Color.Orange)
+
+        ' Imposta le coordinate, raggio del cerchio
+        Dim x As Integer = PictureBox1.Width / 2
+        Dim y As Integer = PictureBox1.Height / 2
+        Dim raggio As Integer = 5 '
+
+        ' Disegna il cerchio7punto sulla PictureBox
+        g.FillEllipse(cerchioColore, x - raggio, y - raggio, 2 * raggio, 2 * raggio)
+
+        ' Rilascia le risorse del pennello
+        cerchioColore.Dispose()
+    End Sub
+
+    Private Sub PictureBox2_Paint(sender As Object, e As PaintEventArgs) Handles PictureBox2.Paint
+        ' Crea un oggetto Graphics dalla PictureBox
+        Dim g As Graphics = e.Graphics
+
+        ' Imposta il colore 
+        Dim cerchioColore As New Pen(Color.Green, 3)
+
+        ' Imposta le coordinate e il raggio del cerchio
+        Dim x As Integer = PictureBox2.Width / 2 ' Coordinata x 
+        Dim y As Integer = PictureBox2.Height / 2 ' Coordinata y 
+        Dim raggio As Integer = 30
+
+        ' Disegna il cerchio vuoto 
+        g.DrawEllipse(cerchioColore, x - raggio, y - raggio, 2 * raggio, 2 * raggio)
+
+        ' Rilascia le risorse del pennello
+        cerchioColore.Dispose()
+    End Sub
+
+    Private Sub PictureBox3_Paint(sender As Object, e As PaintEventArgs) Handles PictureBox3.Paint
+        ' Crea un oggetto Graphics dalla PictureBox
+        Dim g As Graphics = e.Graphics
+
+        ' Imposta il colore del pennello e spessore
+        Dim triangoloColore As New Pen(Color.Red, 3)
+
+        ' Imposta vertici
+        Dim vertici As Point() = {
+            New Point(60, 20),'vertice alto
+            New Point(10, 50),' vertice in basso a sx
+            New Point(90, 50)' vertice in basso a dx
+        }
+
+        ' Disegna il triangolo
+        g.DrawPolygon(triangoloColore, vertici)
+
+        ' Rilascia le risorse del pennello
+        triangoloColore.Dispose()
+    End Sub
+
+    Private Sub PictureBox4_Paint(sender As Object, e As PaintEventArgs) Handles PictureBox4.Paint
+        ' Crea un oggetto Graphics dalla PictureBox
+        Dim g As Graphics = e.Graphics
+
+        ' Imposta il colore del pennello per il segmento
+        Dim segmentoColore As New Pen(Color.Green, 4)
+
+        ' Imposta le coordinate dei punti di inizio e fine del segmento
+        Dim puntoInizio As New Point(20, 30) ' Coordinata x, y del punto di inizio
+        Dim puntoFine As New Point(100, 30)  ' Coordinata x, y del punto di fine
+
+        ' Disegna il segmento sulla PictureBox
+        g.DrawLine(segmentoColore, puntoInizio, puntoFine)
+
+        ' Rilascia le risorse del pennello
+        segmentoColore.Dispose()
+    End Sub
+
+End Class
